@@ -1,0 +1,51 @@
+-
+  var meta = [
+    {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui'
+    },
+    {
+      name: 'apple-mobile-web-app-capable',
+      content: 'yes'
+    },
+    {
+      name: 'apple-mobile-web-app-status-bar-style',
+      content: 'black'
+    }
+  ]
+
+  var css = [
+    /*'fonts/bundle.css',
+    'js/vendor/swiper/swiper.min.css',
+    'js/vendor/jquery-ui/jquery-ui.min.css',
+    'js/vendor/fancybox/jquery.fancybox.min.css',
+    'js/vendor/jbox/jbox.min.css',
+    'css/main.css'*/
+  ]
+
+  var js = [
+    /*'js/vendor/jquery/jquery.min.js',
+    'js/vendor/swiper/swiper.min.js',
+    'js/vendor/jquery-ui/jquery-ui.min.js',
+    'js/vendor/fancybox/jquery.fancybox.min.js',
+    'js/vendor/jbox/jbox.min.js',
+    'js/vendor/scrollmagic/scrollmagic.min.js',
+    'js/app/main.js'*/
+  ]
+
+doctype html
+html(lang="ru")
+  head
+    title Gulp Starter
+    meta(charset="UTF-8")
+    each item in meta
+      meta(name=item.name, content=item.content)
+    each item in css
+      link(rel="stylesheet", href=item)
+
+  body
+    .page
+      block content
+
+    each item in js
+      script(src=item)

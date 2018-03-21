@@ -1,0 +1,38 @@
+-
+  var meta = [
+    {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui'
+    },
+    {
+      name: 'apple-mobile-web-app-capable',
+      content: 'yes'
+    },
+    {
+      name: 'apple-mobile-web-app-status-bar-style',
+      content: 'black'
+    }
+  ]
+
+  var pages = [
+    {
+      label: 'Главная',
+      name: 'main'
+    }
+  ]
+
+doctype html
+html(lang="ru")
+  head
+    title Gulp Starter
+    meta(charset="UTF-8")
+    each item in meta
+      meta(name=item.name, content=item.content)
+    link(rel="stylesheet", href="css/main.css")
+  body(style="overflow: hidden")
+    main.index-menu
+      h3 Список страниц в проекте
+      ol
+        each page in pages
+          li
+            a(href= page.name + '.html')= page.label
