@@ -1,0 +1,75 @@
+mixin header(isMainPage)
+  header.header
+    if (isMainPage)
+      .header-top
+        .wrapper
+          .header-line
+            .header-left
+              a(href="#").header__logo
+            .header-right
+              .weather-controls
+                button(type="button", data-target="#preset-1").weather__button.js-weather.active Сегодня
+                button(type="button", data-target="#preset-2").weather__button.js-weather За 3 дня
+              section#preset-1.weather-hidden.show
+                .weather-block
+                  .weather-left -14°
+                  .weather-right
+                    .weather-right-line
+                      span Влажность:
+                      | 76%
+                    .weather-right-line
+                      span Давление:
+                      | 770 мм
+                    .weather-right-line
+                      span Ветер:
+                      | 4,2 м/с
+              section#preset-2.weather-hidden
+                p [ тут что-то еще ]
+              a(href="#").weather-company Gismeteo
+          .header-title Геологоразведочная компания<br>ООО «Горизонт»
+    .header-bottom(class=(!isMainPage) ? 'with-logo' : '')
+      .wrapper
+        if (!isMainPage)
+          a(href="#").header__logo
+        nav.menu
+          ul
+            li.parent
+              a(href="#") О компании
+              nav.menu-sub
+                ul
+                  li
+                    a(href="#") Первый пункт
+                  li
+                    a(href="#") Второй пункт
+                  li
+                    a(href="#") Третий пункт
+            li.parent
+              a(href="#") Услуги
+              nav.menu-sub
+                ul
+                  li
+                    a(href="#") Первый пункт
+                  li
+                    a(href="#") Второй пункт
+                  li
+                    a(href="#") Третий пункт
+            li
+              a(href="#") География
+            li
+              a(href="#") Закупки
+            li.parent
+              a(href="#") Карьера
+              nav.menu-sub
+                ul
+                  li
+                    a(href="#") Первый пункт
+                  li
+                    a(href="#") Второй пункт
+                  li
+                    a(href="#") Третий пункт
+            li
+              a(href="#") Сотрудникам
+            li
+              a(href="#") Контакты
+            li
+              button(type="button").menu-search

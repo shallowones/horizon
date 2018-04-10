@@ -15,28 +15,28 @@
   ]
 
   var css = [
-    /*'fonts/bundle.css',
+    'fonts/bundle.css',
     'js/vendor/swiper/swiper.min.css',
     'js/vendor/jquery-ui/jquery-ui.min.css',
     'js/vendor/fancybox/jquery.fancybox.min.css',
     'js/vendor/jbox/jbox.min.css',
-    'css/main.css'*/
+    'css/main.css'
   ]
 
   var js = [
-    /*'js/vendor/jquery/jquery.min.js',
+    'js/vendor/jquery/jquery.min.js',
     'js/vendor/swiper/swiper.min.js',
     'js/vendor/jquery-ui/jquery-ui.min.js',
     'js/vendor/fancybox/jquery.fancybox.min.js',
     'js/vendor/jbox/jbox.min.js',
     'js/vendor/scrollmagic/scrollmagic.min.js',
-    'js/app/main.js'*/
+    'js/app/main.js'
   ]
 
 doctype html
 html(lang="ru")
   head
-    title Gulp Starter
+    title Горинзонт
     meta(charset="UTF-8")
     each item in meta
       meta(name=item.name, content=item.content)
@@ -46,6 +46,7 @@ html(lang="ru")
   body
     .page
       block content
+      include includes/footer
 
     each item in js
       script(src=item)

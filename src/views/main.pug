@@ -1,10 +1,82 @@
 extends layout
 
+include mixins/header
+
 block content
 
-  header.header
-    | Hey, Username!
+  -
+    var services = [
+      'Геологоразведочные, геофизические и геохимические работы в области изучения недр',
+      'Монтаж, демонтаж, ремонт буровых установок',
+      'Строительство и содержание зимников',
+      'Перевозка грузов специализированным транспортом',
+      'Организация общественного питания',
+      'Техническая и биологическая рекультивация буровых площадок',
+      'Промышленно-гражданское строительство',
+      'Тампонажные и ремонтно изоляционные работы при проводке скважин',
+      'Поставка ГСМ',
+      'Хранение ГСМ',
+      'Перевалка с воды',
+      'Вывоз ТБО'
+    ]
 
+  +header(true)
   main.main
-
-  footer.footer
+    .wrapper
+      .flex.align-center.space-b
+        h1 Услуги компании
+        a(href="#").link.more Подробнее об услугах
+      .services
+        each item, index in services
+          .services__item
+            img(src='images/svg/services-' + (index + 1) + '.svg')
+            p
+              b= item
+    .clients
+      .wrapper
+        .clients-left
+          button(type="button", data-target="#client-1").clients__button.js-clients.active
+            img(src="images/client-1.png")
+          button(type="button", data-target="#client-2").clients__button.js-clients
+            img(src="images/client-2.png")
+          button(type="button", data-target="#client-3").clients__button.js-clients
+            img(src="images/client-1.png")
+          button(type="button", data-target="#client-4").clients__button.js-clients
+            img(src="images/client-3.png")
+          button(type="button", data-target="#client-5").clients__button.js-clients
+            img(src="images/client-4.png")
+          button(type="button", data-target="#client-6").clients__button.js-clients
+            img(src="images/client-3.png")
+          button(type="button", data-target="#client-7").clients__button.js-clients
+            img(src="images/client-5.png")
+          button(type="button", data-target="#client-8").clients__button.js-clients
+            img(src="images/client-6.png")
+          button(type="button", data-target="#client-9").clients__button.js-clients
+            img(src="images/client-5.png")
+        .clients-right
+          .clients-top Наши заказщики
+          section.clients-area
+            h2 ООО «РН-Уватнефтегаз»
+            p.
+              ООО «РН-Уватнефтегаз» занимается разведкой и добычей углеводородов на
+              11 лицензионных участках на юге Тюменской области (Уватский муниципальный
+              район), 7 лицензионных участках в Ханты-Мансийском автономном округе –
+              Югре, 1 лицензионном участке в Омской области
+        each item in [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          div(id='client-' + item, hidden)
+            if (item % 2 === 0)
+              h2 ООО «ЧЧ-ПриветГаз»
+              p.
+                С другой стороны начало повседневной работы по формированию позиции
+                позволяет выполнять важные задания по разработке форм развития.
+                Задача организации, в особенности же дальнейшее развитие различных
+                форм деятельности влечет за собой процесс внедрения и модернизации
+                систем массового участия. Таким образом реализация намеченных плановых
+                заданий требуют определения и уточнения соответствующий условий активизации.
+            else
+              h2 ООО «РН-Уватнефтегаз»
+              p.
+                ООО «РН-Уватнефтегаз» занимается разведкой и добычей углеводородов на
+                11 лицензионных участках на юге Тюменской области (Уватский муниципальный
+                район), 7 лицензионных участках в Ханты-Мансийском автономном округе –
+                Югре, 1 лицензионном участке в Омской области

@@ -1,7 +1,7 @@
 {
-  "name": "sb-ugra",
+  "name": "horizon",
   "version": "1.0.0",
-  "description": "Gul Starter",
+  "description": "Верстка сайта Горинзонт",
   "main": "index.js",
   "scripts": {
     "start": "gulp",
