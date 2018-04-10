@@ -16,8 +16,8 @@ const babel = require('gulp-babel')
 const stream = require('stream-combiner2')
 const cssNaNo = require('gulp-cssnano')
 const LessAutoPrefix = require('less-plugin-autoprefix')
-const rename = require('gulp-rename');
-const packageJson = require('./package.json');
+const rename = require('gulp-rename')
+const packageJson = require('./package.json')
 const combine = stream.obj
 
 // запуск к продакшену, директория dist
@@ -167,7 +167,7 @@ const vendorScripts = [
 ]
 
 const watch = () => {
-  gulp.watch('./src/views/*.pug', views)
+  gulp.watch('./src/views/**/*.pug', views)
   gulp.watch('./src/styles/*.less', styles)
   gulp.watch('./src/images/**/*.{jpg,jpeg,png,svg,gif}', images)
   gulp.watch('./src/js/*.js', scripts)
