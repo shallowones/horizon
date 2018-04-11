@@ -51,5 +51,14 @@
       })
     }
 
+    // custom select
+    {
+      //console.log($('.js-select')[0].selected)
+      //console.log($('.js-select')[1].value)
+      $('.js-select').SumoSelect({
+        placeholder: 'This is a placeholder'
+      })
+    }
+
   })
 })(jQuery)

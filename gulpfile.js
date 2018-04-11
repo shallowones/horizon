@@ -116,27 +116,13 @@ const vendorScripts = [
       .pipe(gulpIf(isProduction, uglify()))
       .pipe(gulp.dest(`./${folder}/js/vendor/scrollmagic`))
   },
-  function jqueryDatePickerAndSelectMenuJS () {
-    const files = [
-      './node_modules/jquery.datepicker-selectmenu/jquery-datepicker.js',
-      './node_modules/jquery.datepicker-selectmenu/jquery-selectmenu.js',
-    ]
-
-    return gulp.src(files)
-      .pipe(concat('jquery-ui.min.js'))
-      .pipe(uglify())
-      .pipe(gulp.dest(`./${folder}/js/vendor/jquery-ui`))
+  function sumoSelectJS () {
+    return gulp.src('./node_modules/sumoselect/jquery.sumoselect.min.js')
+      .pipe(gulp.dest(`./${folder}/js/vendor/sumoselect`))
   },
-  function jqueryDatePickerAndSelectMenuCSS () {
-    const files = [
-      './node_modules/jquery.datepicker-selectmenu/jquery-datepicker.css',
-      './node_modules/jquery.datepicker-selectmenu/jquery-selectmenu.css',
-    ]
-
-    return gulp.src(files)
-      .pipe(concat('jquery-ui.min.css'))
-      .pipe(cssNaNo())
-      .pipe(gulp.dest(`./${folder}/js/vendor/jquery-ui`))
+  function sumoSelectCSS () {
+    return gulp.src('./node_modules/sumoselect/sumoselect.min.css')
+      .pipe(gulp.dest(`./${folder}/js/vendor/sumoselect`))
   },
   function swiperJS () {
     return gulp.src('./node_modules/swiper/dist/js/swiper.min.js')
