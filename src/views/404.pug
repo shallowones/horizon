@@ -1,0 +1,19 @@
+extends layout
+
+include mixins/header
+
+block content
+
+  +header(false)
+  main.main
+    .detail.wrapper
+      .page404
+        .left 404
+        .right
+          h2 Заправшиваемая страница не найдена
+          p.
+            Возможно страница, которую Вы ищите не существует или
+            была удалена. Проверьте корректность адреса страницы сайта
+          .page404-buttons
+            a(href="#").button.back-blue Вернуться на главную
+            a(href="#").button.img-left.mail Написать в поддержку

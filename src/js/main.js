@@ -1,9 +1,19 @@
-(function ($) {
+(function ($, Swiper, jBox) {
   $(function () {
 
     const ACTIVE = 'active'
 
     const SHOW = 'show'
+
+    const OPEN = 'open'
+
+    const PLAN_WIDTH = 1024
+
+    const $document = $(document)
+
+    const $page = $('.page')
+
+    const $window = $(window)
 
     // weather presets
     {
@@ -53,12 +63,84 @@
 
     // custom select
     {
-      //console.log($('.js-select')[0].selected)
-      //console.log($('.js-select')[1].value)
-      $('.js-select').SumoSelect({
-        placeholder: 'This is a placeholder'
+      $('.js-select').SumoSelect()
+    }
+
+    // map pins
+    {
+      new jBox('Tooltip', {
+        attach: '.js-pin',
+        trigger: 'click',
+        offset: {
+          x: 0,
+          y: 29
+        },
+        zIndex: 10,
+        closeOnClick: 'body',
+        animation: 'move',
+        fade: 300,
+        onInit: function () {
+          const tooltip = this
+          const parents = [$document.find('html'), $page]
+          parents.some(($parent) => {
+            const isScrolling = $parent.css('overflow-y') === 'auto'
+            if (isScrolling) {
+              $parent.on( 'scroll', tooltip.close.bind(tooltip) )
+            }
+            return isScrolling
+          })
+        },
+        onOpen: function () {
+          const $source = this.source
+          const html = $source.find('div[hidden]').html()
+          this.setContent(html)
+          this.content.find('i').on('click', this.close.bind(this))
+        }
+      })
+    }
+
+    // slider
+    {
+      new Swiper('.js-slider', {
+        slidesPerView: 'auto',
+        navigation: {
+          nextEl: '.js-slider-next',
+          prevEl: '.js-slider-prev'
+        }
+      })
+    }
+
+    // mobile
+    {
+      const $mobile = $('.mobile')
+      const $mobileButton = $('.js-mobile')
+
+      // button
+      $mobileButton.on('click', (e) => {
+        const $this = $(e.currentTarget)
+        const isOpen = $this.hasClass(OPEN)
+        $this.toggleClass(OPEN, !isOpen)
+        $mobile.slideToggle(!isOpen)
+      })
+
+      // menu
+      $mobile.find('.mobile-menu button').on('click', (e) => {
+        const $this = $(e.currentTarget)
+        const isOpen = $this.hasClass(OPEN)
+        $this.toggleClass(OPEN, !isOpen)
+        $this.parent().find('.mobile-menu-sub').slideToggle(!isOpen)
+      })
+
+      // close menu on resize to pc
+      $window.resize((e) => {
+        if (e.currentTarget.innerWidth > PLAN_WIDTH) {
+          $mobileButton.removeClass(OPEN)
+          $mobile.removeAttr('style')
+          $mobile.find('.mobile-menu button').removeClass(OPEN)
+          $mobile.find('.mobile-menu-sub').removeAttr('style')
+        }
       })
     }
 
   })
-})(jQuery)
+})(jQuery, Swiper, jBox)

@@ -7,7 +7,7 @@
     "start": "gulp",
     "dist": "set NODE_ENV=production&&gulp"
   },
-  "url": "https://github.com/shallowones/gulp-starter.git",
+  "url": "https://github.com/shallowones/horizon",
   "author": "shallowones",
   "license": "MIT",
   "devDependencies": {
@@ -41,7 +41,7 @@
     "stream-combiner2": "^1.1.1"
   },
   "dependencies": {
-    "@fancyapps/fancybox": "^3.3.4",
+    "@fancyapps/fancybox": "3.2.5",
     "gsap": "^1.20.2",
     "jbox": "^0.4.8",
     "jquery": "^3.3.1",
@@ -61,7 +61,9 @@
     "globals": {
       "ScrollMagic": true,
       "TweenMax": true,
-      "TimelineLite": true
+      "TimelineLite": true,
+      "Swiper": true,
+      "jBox": true
     }
   },
   "browserslist": {

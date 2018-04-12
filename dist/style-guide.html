@@ -11,11 +11,55 @@
     <link rel="stylesheet" href="js/vendor/fancybox/jquery.fancybox.min.css">
     <link rel="stylesheet" href="js/vendor/jbox/jbox.min.css">
     <link rel="stylesheet" href="js/vendor/sumoselect/sumoselect.min.css">
-    <link rel="stylesheet" href="css/main-93affa654e.css">
+    <link rel="stylesheet" href="css/main-85fde603dc.css">
   </head>
   <body>
     <div class="page">
+      <div class="mobile">
+        <nav class="mobile-menu wrapper">
+          <ul>
+            <li>
+              <button type="button">О компании</button>
+              <nav class="mobile-menu-sub">
+                <ul>
+                  <li><a href="#">Первый пункт</a></li>
+                  <li><a href="#">Второй пункт</a></li>
+                  <li><a href="#">Третий пункт</a></li>
+                </ul>
+              </nav>
+            </li>
+            <li>
+              <button type="button">Услуги</button>
+              <nav class="mobile-menu-sub">
+                <ul>
+                  <li><a href="#">Первый пункт</a></li>
+                  <li><a href="#">Второй пункт</a></li>
+                  <li><a href="#">Третий пункт</a></li>
+                </ul>
+              </nav>
+            </li>
+            <li><a href="#">География</a></li>
+            <li><a href="#">Закупки</a></li>
+            <li>
+              <button type="button">Карьера</button>
+              <nav class="mobile-menu-sub">
+                <ul>
+                  <li><a href="#">Первый пункт</a></li>
+                  <li><a href="#">Второй пункт</a></li>
+                  <li><a href="#">Третий пункт</a></li>
+                </ul>
+              </nav>
+            </li>
+            <li><a href="#">Сотрудникам</a></li>
+            <li><a href="#">Контакты</a></li>
+          </ul>
+        </nav>
+      </div>
       <header class="header">
+        <div class="header-mobile"><a class="header__logo" href="#"></a>
+          <button class="menu-search" type="button"></button>
+          <button class="mobile__button js-mobile" type="button"><span></span><span></span><span></span><span></span></button>
+        </div>
         <div class="header-bottom with-logo">
           <div class="wrapper"><a class="header__logo" href="#"></a>
             <nav class="menu">
@@ -486,7 +530,7 @@
               <span>rar, 14кб</span></a><a class="file" href="file.jpg">
               Лицензия на осуществление эксплуатации взрывопожароопасных и
               химически опасных производственных объектов.
-              <span>rar, 14кб</span>
+              <span>jpg, 14кб</span>
               </a></div><br><br>
           <h2>Информационный блок</h2>
           <div class="info">
@@ -505,9 +549,49 @@
                 <p><span class="left">Телефон:</span>+7 (3467) 37-52-85<br><span class="left">E–mail:</span><a href="#">training_center@bk.ru</a></p>
               </div>
             </div>
-          </div><br><br>
+          </div>
+        </div><br><br>
+        <div class="detail wrapper">
           <h2>География проведения работ</h2>
-          <p>[тут карта с модальными окнами]</p><br><br>
+        </div>
+        <div class="map">
+          <div class="map-wrapper">
+            <button class="map__pin js-pin" type="button" style="left: 207px; top: 155px">
+              <div hidden>
+                <div class="map-tooltip">
+                  <div class="map-tooltip__title">Пример заголовка<i class="map-tooltip__close"></i></div>
+                  <p>
+                    Небольшой пример текста, отображаемого при выборе конкретной
+                    точки на карте с информацией о конкретном объекте
+                  </p><a class="link more" href="#">Узнать больше</a>
+                </div>
+              </div>
+            </button>
+            <button class="map__pin js-pin" type="button" style="left: 702px; top: 318px">
+              <div hidden>
+                <div class="map-tooltip">
+                  <div class="map-tooltip__title">Пример заголовка выбранной точки в две строки<i class="map-tooltip__close"></i></div>
+                  <p>
+                    Небольшой пример текста, отображаемого при выборе конкретной
+                    точки на карте с информацией о конкретном объекте
+                  </p><a class="link more" href="#">Узнать больше</a>
+                </div>
+              </div>
+            </button>
+            <button class="map__pin js-pin" type="button" style="left: 1019px; top: 33px">
+              <div hidden>
+                <div class="map-tooltip">
+                  <div class="map-tooltip__title">Пример заголовка<i class="map-tooltip__close"></i></div>
+                  <p>
+                    Небольшой пример текста, отображаемого при выборе конкретной
+                    точки на карте с информацией о конкретном объекте
+                  </p><a class="link more" href="#">Узнать больше</a>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div><br><br>
+        <div class="detail wrapper">
           <h2>Обратная связь</h2>
           <form class="form" action="#">
             <div class="form-flex">
@@ -515,11 +599,11 @@
                 <label class="form__label" for="input-1">ФИО</label>
                 <input class="form__input" type="text" placeholder="Иванов Иван Иванович" id="input-1">
               </div>
-              <div class="form-control">
+              <div class="form-control invalid">
                 <label class="form__label" for="input-2">Телефон</label>
                 <input class="form__input" type="text" placeholder="+7 (___) ___-__-__" id="input-2">
               </div>
-              <div class="form-control invalid">
+              <div class="form-control">
                 <label class="form__label" for="input-3">E–mail</label>
                 <input class="form__input" type="text" placeholder="me@example.com" id="input-3">
               </div>
@@ -540,7 +624,7 @@
             </div>
           </form><br><br>
           <h2>Текст + изображение</h2>
-          <div class="img-text"><img src="images/gallery-4.png">
+          <div class="img-text"><img src="images/gallery-4.jpg">
             <p>
               Растущий производственный потенциал и динамичное развитие
               ООО "ГОРИЗОНТ" диктуют необходимость проведения сбалансированной
@@ -555,7 +639,22 @@
               компания успешно сотрудничает с многими учебными заведениями нашего региона.
               Будущие молодые специалисты приглашаются на время прохождения
               производственной практики.
+              
             </p>
+          </div><br><br>
+          <div class="slider-head">
+            <h2>Галерея изображений</h2>
+            <div class="slider-controls">
+              <button class="slider-controls__prev js-slider-prev" type="button"></button>
+              <button class="slider-controls__next js-slider-next" type="button"></button>
+            </div>
+          </div>
+          <div class="swiper-container slider js-slider">
+            <div class="swiper-wrapper"><a class="swiper-slide slider-item" href="images/gallery-1.jpg" data-fancybox="gal">
+                <div class="slider-item__img" style="background-image: url('images/gallery-1.jpg')"></div></a><a class="swiper-slide slider-item" href="images/gallery-2.jpg" data-fancybox="gal">
+                <div class="slider-item__img" style="background-image: url('images/gallery-2.jpg')"></div></a><a class="swiper-slide slider-item" href="images/gallery-3.jpg" data-fancybox="gal">
+                <div class="slider-item__img" style="background-image: url('images/gallery-3.jpg')"></div></a><a class="swiper-slide slider-item" href="images/gallery-4.jpg" data-fancybox="gal">
+                <div class="slider-item__img" style="background-image: url('images/gallery-4.jpg')"></div></a></div>
           </div>
         </div>
       </main>
@@ -572,6 +671,6 @@
     <script src="js/vendor/jbox/jbox.min.js"></script>
     <script src="js/vendor/sumoselect/jquery.sumoselect.min.js"></script>
     <script src="js/vendor/scrollmagic/scrollmagic.min.js"></script>
-    <script src="js/app/main-81f42368d7.js"></script>
+    <script src="js/app/main-9f5ce4ed5f.js"></script>
   </body>
 </html>

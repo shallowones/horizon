@@ -1,5 +1,70 @@
 mixin header(isMainPage)
+
+  -
+    var menuItems = [
+      {
+        name: 'О компании',
+        sub: [
+          'Первый пункт',
+          'Второй пункт',
+          'Третий пункт'
+        ]
+      },
+      {
+        name: 'Услуги',
+        sub: [
+          'Первый пункт',
+          'Второй пункт',
+          'Третий пункт'
+        ]
+      },
+      {
+        name: 'География'
+      },
+      {
+        name: 'Закупки'
+      },
+      {
+        name: 'Карьера',
+        sub: [
+          'Первый пункт',
+          'Второй пункт',
+          'Третий пункт'
+        ]
+      },
+      {
+        name: 'Сотрудникам'
+      },
+      {
+        name: 'Контакты'
+      }
+    ]
+
+  .mobile
+    nav.mobile-menu.wrapper
+      ul
+        each item in menuItems
+          if (item.hasOwnProperty('sub'))
+            li
+              button(type="button")= item.name
+              nav.mobile-menu-sub
+                ul
+                  each sub in item.sub
+                    li
+                      a(href="#")= sub
+          else
+            li
+              a(href="#")= item.name
+
   header.header
+    .header-mobile
+      a(href="#").header__logo
+      button(type="button").menu-search
+      button(type="button").mobile__button.js-mobile
+        span
+        span
+        span
+        span
     if (isMainPage)
       .header-top
         .wrapper
@@ -24,7 +89,8 @@ mixin header(isMainPage)
                       span Ветер:
                       | 4,2 м/с
               section#preset-2.weather-hidden
-                p [ тут что-то еще ]
+                .weather-block
+                  p [ тут что-то еще ]
               a(href="#").weather-company Gismeteo
           .header-title Геологоразведочная компания<br>ООО «Горизонт»
     .header-bottom(class=(!isMainPage) ? 'with-logo' : '')
@@ -33,43 +99,17 @@ mixin header(isMainPage)
           a(href="#").header__logo
         nav.menu
           ul
-            li.parent
-              a(href="#") О компании
-              nav.menu-sub
-                ul
-                  li
-                    a(href="#") Первый пункт
-                  li
-                    a(href="#") Второй пункт
-                  li
-                    a(href="#") Третий пункт
-            li.parent
-              a(href="#") Услуги
-              nav.menu-sub
-                ul
-                  li
-                    a(href="#") Первый пункт
-                  li
-                    a(href="#") Второй пункт
-                  li
-                    a(href="#") Третий пункт
-            li
-              a(href="#") География
-            li
-              a(href="#") Закупки
-            li.parent
-              a(href="#") Карьера
-              nav.menu-sub
-                ul
-                  li
-                    a(href="#") Первый пункт
-                  li
-                    a(href="#") Второй пункт
-                  li
-                    a(href="#") Третий пункт
-            li
-              a(href="#") Сотрудникам
-            li
-              a(href="#") Контакты
+            each item in menuItems
+              if (item.hasOwnProperty('sub'))
+                li.parent
+                  a(href="#")= item.name
+                  nav.menu-sub
+                    ul
+                      each sub in item.sub
+                        li
+                          a(href="#")= sub
+              else
+                li
+                  a(href="#")= item.name
             li
               button(type="button").menu-search
