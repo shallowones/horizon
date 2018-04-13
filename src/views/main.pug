@@ -2,6 +2,16 @@ extends layout
 
 include mixins/header
 
+block loader
+  .loader.js-loader
+    .loader__img
+    .loader__line
+      span
+
+block scripts
+  script(src="js/vendor/scrollmagic/scrollmagic.min.js")
+  script(src="js/app/animation.js")
+
 block content
 
   -
@@ -28,36 +38,28 @@ block content
         a(href="#").link.more Подробнее об услугах
       .services
         each item, index in services
-          .services__item
+          .services__item.animation.animation-group-1
             img(src='images/svg/services-' + (index + 1) + '.svg')
             p
               b= item
-    .clients
+        #animation-trigger-2.abs.abs-20
+    .clients.animation.animation-group-2
       .wrapper
         .clients-left
-          button(type="button", data-target="#client-1").clients__button.js-clients.active
-            img(src="images/client-1.png")
-          button(type="button", data-target="#client-2").clients__button.js-clients
-            img(src="images/client-2.png")
-          button(type="button", data-target="#client-3").clients__button.js-clients
-            img(src="images/client-1.png")
-          button(type="button", data-target="#client-4").clients__button.js-clients
-            img(src="images/client-3.png")
-          button(type="button", data-target="#client-5").clients__button.js-clients
-            img(src="images/client-4.png")
-          button(type="button", data-target="#client-6").clients__button.js-clients
-            img(src="images/client-3.png")
-          button(type="button", data-target="#client-7").clients__button.js-clients
-            img(src="images/client-5.png")
-          button(type="button", data-target="#client-8").clients__button.js-clients
-            img(src="images/client-6.png")
-          button(type="button", data-target="#client-9").clients__button.js-clients
-            img(src="images/client-5.png")
+          each item in [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            if (item === 1)
+              button(type="button",
+              data-target='#client-' + item).clients__button.js-clients.animation.animation-group-2.active
+                img(src='images/client-' + item + '.png')
+            else
+              button(type="button",
+              data-target='#client-' + item).clients__button.js-clients.animation.animation-group-2
+                img(src='images/client-' + item + '.png')
         .clients-right
-          .clients-top Наши заказчики
+          .clients-top.animation.animation-group-2 Наши заказчики
           section.clients-area
-            h2 ООО «РН-Уватнефтегаз»
-            p.
+            h2.animation.animation-group-2 ООО «РН-Уватнефтегаз»
+            p.animation.animation-group-2.
               ООО «РН-Уватнефтегаз» занимается разведкой и добычей углеводородов на
               11 лицензионных участках на юге Тюменской области (Уватский муниципальный
               район), 7 лицензионных участках в Ханты-Мансийском автономном округе –

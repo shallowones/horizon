@@ -11,16 +11,20 @@
     <link rel="stylesheet" href="js/vendor/fancybox/jquery.fancybox.min.css">
     <link rel="stylesheet" href="js/vendor/jbox/jbox.min.css">
     <link rel="stylesheet" href="js/vendor/sumoselect/sumoselect.min.css">
-    <link rel="stylesheet" href="css/main-85fde603dc.css">
+    <link rel="stylesheet" href="css/main-f0c42b890e.css">
   </head>
   <body>
+    <div class="loader js-loader">
+      <div class="loader__img"></div>
+      <div class="loader__line"><span></span></div>
+    </div>
     <div class="page">
       <div class="mobile">
         <nav class="mobile-menu wrapper">
           <ul>
             <li>
-              <button type="button">О компании</button>
-              <nav class="mobile-menu-sub">
+              <button class="open" type="button">О компании</button>
+              <nav class="mobile-menu-sub" style="display: block">
                 <ul>
                   <li><a href="#">Первый пункт</a></li>
                   <li><a href="#">Второй пункт</a></li>
@@ -29,8 +33,8 @@
               </nav>
             </li>
             <li>
-              <button type="button">Услуги</button>
-              <nav class="mobile-menu-sub">
+              <button class="open" type="button">Услуги</button>
+              <nav class="mobile-menu-sub" style="display: block">
                 <ul>
                   <li><a href="#">Первый пункт</a></li>
                   <li><a href="#">Второй пункт</a></li>
@@ -41,8 +45,8 @@
             <li><a href="#">География</a></li>
             <li><a href="#">Закупки</a></li>
             <li>
-              <button type="button">Карьера</button>
-              <nav class="mobile-menu-sub">
+              <button class="open" type="button">Карьера</button>
+              <nav class="mobile-menu-sub" style="display: block">
                 <ul>
                   <li><a href="#">Первый пункт</a></li>
                   <li><a href="#">Второй пункт</a></li>
@@ -57,8 +61,12 @@
       </div>
       <header class="header">
         <div class="header-mobile"><a class="header__logo" href="#"></a>
-          <button class="menu-search" type="button"></button>
+          <button class="menu-search js-search" type="button" data-target="#search-mobile"></button>
           <button class="mobile__button js-mobile" type="button"><span></span><span></span><span></span><span></span></button>
+          <form class="search-form" action="#" id="search-mobile">
+            <input class="search-form__input" type="text" placeholder="Введите запрос"/>
+            <button class="button" type="submit">Найти</button>
+          </form>
         </div>
         <div class="header-top">
           <div class="wrapper">
@@ -125,12 +133,17 @@
                 <li><a href="#">Сотрудникам</a></li>
                 <li><a href="#">Контакты</a></li>
                 <li>
-                  <button class="menu-search" type="button"></button>
+                  <button class="menu-search js-search" type="button" data-target="#search"></button>
                 </li>
               </ul>
             </nav>
+            <form class="search-form" action="#" id="search">
+              <input class="search-form__input" type="text" placeholder="Введите запрос"/>
+              <button class="button" type="submit">Найти</button>
+            </form>
           </div>
         </div>
+        <div class="abs abs-35" id="animation-trigger-1"></div>
       </header>
       <main class="main">
         <div class="wrapper">
@@ -138,62 +151,63 @@
             <h2>Услуги компании</h2><a class="link more" href="#">Подробнее об услугах</a>
           </div>
           <div class="services">
-            <div class="services__item"><img src="images/svg/services-1.svg">
+            <div class="services__item animation animation-group-1"><img src="images/svg/services-1.svg">
               <p><b>Геологоразведочные, геофизические и геохимические работы в области изучения недр</b></p>
             </div>
-            <div class="services__item"><img src="images/svg/services-2.svg">
+            <div class="services__item animation animation-group-1"><img src="images/svg/services-2.svg">
               <p><b>Монтаж, демонтаж, ремонт буровых установок</b></p>
             </div>
-            <div class="services__item"><img src="images/svg/services-3.svg">
+            <div class="services__item animation animation-group-1"><img src="images/svg/services-3.svg">
               <p><b>Строительство и содержание зимников</b></p>
             </div>
-            <div class="services__item"><img src="images/svg/services-4.svg">
+            <div class="services__item animation animation-group-1"><img src="images/svg/services-4.svg">
               <p><b>Перевозка грузов специализированным транспортом</b></p>
             </div>
-            <div class="services__item"><img src="images/svg/services-5.svg">
+            <div class="services__item animation animation-group-1"><img src="images/svg/services-5.svg">
               <p><b>Организация общественного питания</b></p>
             </div>
-            <div class="services__item"><img src="images/svg/services-6.svg">
+            <div class="services__item animation animation-group-1"><img src="images/svg/services-6.svg">
               <p><b>Техническая и биологическая рекультивация буровых площадок</b></p>
             </div>
-            <div class="services__item"><img src="images/svg/services-7.svg">
+            <div class="services__item animation animation-group-1"><img src="images/svg/services-7.svg">
               <p><b>Промышленно-гражданское строительство</b></p>
             </div>
-            <div class="services__item"><img src="images/svg/services-8.svg">
+            <div class="services__item animation animation-group-1"><img src="images/svg/services-8.svg">
               <p><b>Тампонажные и ремонтно изоляционные работы при проводке скважин</b></p>
             </div>
-            <div class="services__item"><img src="images/svg/services-9.svg">
+            <div class="services__item animation animation-group-1"><img src="images/svg/services-9.svg">
               <p><b>Поставка ГСМ</b></p>
             </div>
-            <div class="services__item"><img src="images/svg/services-10.svg">
+            <div class="services__item animation animation-group-1"><img src="images/svg/services-10.svg">
               <p><b>Хранение ГСМ</b></p>
             </div>
-            <div class="services__item"><img src="images/svg/services-11.svg">
+            <div class="services__item animation animation-group-1"><img src="images/svg/services-11.svg">
               <p><b>Перевалка с воды</b></p>
             </div>
-            <div class="services__item"><img src="images/svg/services-12.svg">
+            <div class="services__item animation animation-group-1"><img src="images/svg/services-12.svg">
               <p><b>Вывоз ТБО</b></p>
             </div>
+            <div class="abs abs-20" id="animation-trigger-2"></div>
           </div>
         </div>
-        <div class="clients">
+        <div class="clients animation animation-group-2">
           <div class="wrapper">
             <div class="clients-left">
-              <button class="clients__button js-clients active" type="button" data-target="#client-1"><img src="images/client-1.png"></button>
-              <button class="clients__button js-clients" type="button" data-target="#client-2"><img src="images/client-2.png"></button>
-              <button class="clients__button js-clients" type="button" data-target="#client-3"><img src="images/client-1.png"></button>
-              <button class="clients__button js-clients" type="button" data-target="#client-4"><img src="images/client-3.png"></button>
-              <button class="clients__button js-clients" type="button" data-target="#client-5"><img src="images/client-4.png"></button>
-              <button class="clients__button js-clients" type="button" data-target="#client-6"><img src="images/client-3.png"></button>
-              <button class="clients__button js-clients" type="button" data-target="#client-7"><img src="images/client-5.png"></button>
-              <button class="clients__button js-clients" type="button" data-target="#client-8"><img src="images/client-6.png"></button>
-              <button class="clients__button js-clients" type="button" data-target="#client-9"><img src="images/client-5.png"></button>
+              <button class="clients__button js-clients animation animation-group-2 active" type="button" data-target="#client-1"><img src="images/client-1.png"></button>
+              <button class="clients__button js-clients animation animation-group-2" type="button" data-target="#client-2"><img src="images/client-2.png"></button>
+              <button class="clients__button js-clients animation animation-group-2" type="button" data-target="#client-3"><img src="images/client-3.png"></button>
+              <button class="clients__button js-clients animation animation-group-2" type="button" data-target="#client-4"><img src="images/client-4.png"></button>
+              <button class="clients__button js-clients animation animation-group-2" type="button" data-target="#client-5"><img src="images/client-5.png"></button>
+              <button class="clients__button js-clients animation animation-group-2" type="button" data-target="#client-6"><img src="images/client-6.png"></button>
+              <button class="clients__button js-clients animation animation-group-2" type="button" data-target="#client-7"><img src="images/client-7.png"></button>
+              <button class="clients__button js-clients animation animation-group-2" type="button" data-target="#client-8"><img src="images/client-8.png"></button>
+              <button class="clients__button js-clients animation animation-group-2" type="button" data-target="#client-9"><img src="images/client-9.png"></button>
             </div>
             <div class="clients-right">
-              <div class="clients-top">Наши заказчики</div>
+              <div class="clients-top animation animation-group-2">Наши заказчики</div>
               <section class="clients-area">
-                <h2>ООО «РН-Уватнефтегаз»</h2>
-                <p>
+                <h2 class="animation animation-group-2">ООО «РН-Уватнефтегаз»</h2>
+                <p class="animation animation-group-2">
                   ООО «РН-Уватнефтегаз» занимается разведкой и добычей углеводородов на
                   11 лицензионных участках на юге Тюменской области (Уватский муниципальный
                   район), 7 лицензионных участках в Ханты-Мансийском автономном округе –
@@ -295,8 +309,8 @@
       </main>
       <footer class="footer">
         <div class="wrapper">
-          <div class="footer-left">ООО «ГОРИЗОНТ» 2014-2018</div>
-          <div class="footer-right">Разработка и техподдержка сайта: <a href="#">Югорские Интернет Решения</a></div>
+          <div class="footer-left"><span class="animation animation-group-2">ООО «ГОРИЗОНТ» 2014-2018</span></div>
+          <div class="footer-right"><span class="animation animation-group-2">Разработка и техподдержка сайта: <a href="#">Югорские Интернет Решения</a></span></div>
         </div>
       </footer>
     </div>
@@ -305,7 +319,8 @@
     <script src="js/vendor/fancybox/jquery.fancybox.min.js"></script>
     <script src="js/vendor/jbox/jbox.min.js"></script>
     <script src="js/vendor/sumoselect/jquery.sumoselect.min.js"></script>
+    <script src="js/app/main-e5e09f1a49.js"></script>
     <script src="js/vendor/scrollmagic/scrollmagic.min.js"></script>
-    <script src="js/app/main-9f5ce4ed5f.js"></script>
+    <script src="js/app/animation-5d0e0d3fb3.js"></script>
   </body>
 </html>

@@ -29,7 +29,6 @@
     'js/vendor/fancybox/jquery.fancybox.min.js',
     'js/vendor/jbox/jbox.min.js',
     'js/vendor/sumoselect/jquery.sumoselect.min.js',
-    'js/vendor/scrollmagic/scrollmagic.min.js',
     'js/app/main.js'
   ]
 
@@ -44,9 +43,11 @@ html(lang="ru")
       link(rel="stylesheet", href=item)
 
   body
+    block loader
     .page
       block content
       include includes/footer
 
     each item in js
       script(src=item)
+    block scripts

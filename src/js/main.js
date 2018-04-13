@@ -1,4 +1,5 @@
-(function ($, Swiper, jBox) {
+(function ($, Swiper, jBox, document, window) {
+
   $(function () {
 
     const ACTIVE = 'active'
@@ -11,9 +12,9 @@
 
     const $document = $(document)
 
-    const $page = $('.page')
-
     const $window = $(window)
+
+    const $page = $('.page')
 
     // weather presets
     {
@@ -142,5 +143,36 @@
       })
     }
 
+    // search
+    {
+      const $searchButtons = $('.js-search')
+      $searchButtons.on('click', (e) => {
+        const $this = $(e.currentTarget)
+        const $target = $($this.data('target'))
+        const isActive = $this.hasClass(ACTIVE)
+        $this.toggleClass(ACTIVE, !isActive)
+        $target.toggleClass(SHOW, !isActive)
+        if (!isActive) {
+          setTimeout(() => {
+            $target.find('input').focus()
+          }, 100)
+        }
+      })
+      const closeSearchForm = () => {
+        $searchButtons.each((index, el) => {
+          const $this = $(el)
+          const $target = $($this.data('target'))
+          $this.removeClass(ACTIVE)
+          $target.removeClass(SHOW)
+        })
+      }
+      $document.scroll(closeSearchForm)
+      $window.resize(() => {
+        if ($searchButtons.hasClass(ACTIVE)) {
+          closeSearchForm()
+        }
+      })
+    }
+
   })
-})(jQuery, Swiper, jBox)
+})(jQuery, Swiper, jBox, document, window)

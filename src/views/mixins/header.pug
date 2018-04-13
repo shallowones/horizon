@@ -46,8 +46,8 @@ mixin header(isMainPage)
         each item in menuItems
           if (item.hasOwnProperty('sub'))
             li
-              button(type="button")= item.name
-              nav.mobile-menu-sub
+              button(type="button").open= item.name
+              nav.mobile-menu-sub(style="display: block")
                 ul
                   each sub in item.sub
                     li
@@ -59,12 +59,15 @@ mixin header(isMainPage)
   header.header
     .header-mobile
       a(href="#").header__logo
-      button(type="button").menu-search
+      button(type="button", data-target="#search-mobile").menu-search.js-search
       button(type="button").mobile__button.js-mobile
         span
         span
         span
         span
+      form(action="#")#search-mobile.search-form
+        input(type="text", placeholder="Введите запрос").search-form__input
+        button(type="submit").button Найти
     if (isMainPage)
       .header-top
         .wrapper
@@ -112,4 +115,8 @@ mixin header(isMainPage)
                 li
                   a(href="#")= item.name
             li
-              button(type="button").menu-search
+              button(type="button", data-target="#search").menu-search.js-search
+        form(action="#")#search.search-form
+          input(type="text", placeholder="Введите запрос").search-form__input
+          button(type="submit").button Найти
+    #animation-trigger-1.abs.abs-35
