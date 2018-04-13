@@ -1495,6 +1495,7 @@ img {
     height: 100%;
     border-color: @colorPlatinum !important;
     padding: .75rem 3rem .75rem 1rem;
+    border-radius: 4px;
 
     & > span {
       width: 100%;
@@ -1666,10 +1667,10 @@ img {
 
       & > .left {
         display: flex;
+        align-items: center;
 
         @media @desktop-mini {
           margin-bottom: 1rem;
-          align-items: center;
           text-align: left;
         }
 
@@ -2016,6 +2017,7 @@ img {
   border-radius: 4px;
   margin-bottom: 1.5rem;
   position: relative;
+  min-height: 9rem;
   transition: color .3s;
 
   &:before {
@@ -2056,21 +2058,40 @@ img {
   &s {
     display: flex;
     flex-wrap: wrap;
-    margin-left: -1.5rem;
+    justify-content: space-between;
 
     & > .file {
-      width: ~"calc(50% - 1.5rem)";
-      margin-left: 1.5rem;
+      width: ~"calc(50% - .75rem)";
 
       @media @plan-mini {
         width: 100%;
-        margin-left: 0;
+      }
+    }
+
+    &.min {
+
+      & > .file {
+        padding: 1rem 1rem 1rem 76px;
+        min-height: 5rem;
+
+        &:before {
+          left: 1rem;
+          top: 1rem;
+          width: 32px;
+          height: 48px;
+        }
+
+        &:after {
+          padding: 0;
+          left: 1.5rem;
+          top: 2.5rem;
+          font-size: 10px;
+        }
       }
     }
 
     @media @plan-mini {
       display: block;
-      margin-left: 0;
     }
   }
 
@@ -2268,8 +2289,7 @@ img {
 }
 
 .map {
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: auto;
 
   &-wrapper {
     width: 1440px;
@@ -2340,6 +2360,14 @@ img {
       }
     }
   }
+
+  @media @plan-mini {
+    height: 400px;
+  }
+
+  @media @mobile {
+    height: 300px;
+  }
 }
 
 .jBox {
@@ -2364,6 +2392,36 @@ img {
 
   &-pointer {
     display: none;
+  }
+
+  &-Modal {
+
+    & .jBox-content {
+      padding: 1.5rem 1.5rem 0 1.5rem;
+      background-color: @colorWhite;
+      border-radius: 4px;
+
+      & .form {
+        width: 66rem;
+        max-width: 100%;
+      }
+
+      & .proc {
+
+        &-left {
+          width: 100%;
+          margin-bottom: 1.5rem;
+        }
+
+        &-controls {
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  &-overlay {
+    background-color: rgba(0, 0, 0, .6);
   }
 }
 
@@ -2693,10 +2751,225 @@ img {
       height: 100%;
       background-color: @colorBlue;
     }
+
+    @media @mobile {
+      width: ~"calc(100% - 4rem)";
+      margin: 0 auto;
+    }
   }
 
   &.start > .loader__line > span {
     width: 100%;
     animation: loader 2s ease-in-out;
+  }
+}
+
+.proc {
+  border: 1px solid @colorPlatinum;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-left {
+    display: flex;
+    justify-content: space-between;
+    width: ~"calc(100% - 182px)";
+
+    @media @plan {
+      display: block;
+    }
+
+    @media @plan-mini {
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  &-col {
+    width: 40%;
+    padding-right: 1rem;
+
+    &:first-child {
+      width: 35%;
+
+      @media @plan {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+    }
+
+    &:last-child {
+      width: 25%;
+
+      @media @plan {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+    }
+
+    @media @plan {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &-controls {
+    text-align: right;
+  }
+
+  &-bottom {
+
+    & > .form-flex {
+
+      &:last-child {
+
+        & > .form-control {
+          text-align: right;
+
+          & > .button {
+            margin-left: 1rem;
+
+            @media @mobile {
+              margin-left: 0;
+              margin-bottom: 1rem;
+            }
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+
+          @media @mobile {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  &-line {
+    display: flex;
+    line-height: 1.25rem;
+    margin-bottom: 1rem;
+
+    & > span {
+      display: inline-block;
+      vertical-align: top;
+      white-space: nowrap;
+
+      &.gray {
+        white-space: normal;
+        width: 160px;
+
+        @media @plan {
+          width: 18rem;
+          padding-right: 2rem;
+        }
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @media @plan {
+      margin-bottom: .5rem;
+    }
+  }
+
+  & > .button {
+    height: 5rem;
+
+    @media @plan-mini {
+      height: auto;
+    }
+  }
+
+  @media @plan-mini {
+    display: block;
+    text-align: right;
+  }
+
+  @media @mobile {
+    text-align: center;
+  }
+}
+
+.jfilestyle {
+  display: flex;
+  align-items: flex-start;
+
+  & > div[name="filedrag"] {
+    display: none;
+  }
+
+  & > input[type="text"] {
+    display: block;
+    width: 10rem;
+    height: 3rem;
+    border: 1px solid @colorPlatinum;
+    background: @colorWhite;
+    border-radius: 4px 0 0 4px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    padding: .875rem 1.5rem;
+    outline: none;
+    transition: border-color .3s;
+
+    @media @mobile {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      width: ~"calc(100% - 9rem)" !important;
+    }
+  }
+
+  & > .focus-jfilestyle {
+
+    & > label {
+      display: block;
+    }
+
+    & span {
+      height: 3rem;
+      display: inline-block;
+      vertical-align: top;
+      padding: 1rem 1.5rem;
+      font-size: 14px;
+      line-height: 16px;
+      color: @colorBlue;
+      background-color: @colorWhite;
+      border: 1px solid @colorBlue;
+      text-transform: uppercase;
+      border-radius: 0 4px 4px 0;
+      font-weight: bold;
+      position: relative;
+      max-width: 100%;
+      transition: background-color .3s, color .3s;
+      outline: none;
+      text-align: center;
+
+      &:hover {
+        cursor: pointer;
+        background-color: @colorBlue;
+        color: @colorWhite;
+      }
+
+      &:active {
+        background-color: @colorDarkBlue;
+      }
+
+      @media @mobile {
+        width: 9rem;
+        padding: 13px 1rem 10px;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
 }

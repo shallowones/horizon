@@ -90,7 +90,7 @@ const styles = () => {
     .pipe(gulpIf(isProduction, manifest()))
 }
 
-const scripts = () => gulp.src('./src/js/*.js')
+const scripts = () => gulp.src('./src/js/**/*.js')
   .pipe(gulpIf(isProduction, combine(babel({presets: ['es2015']}), uglify(), rev())))
   .pipe(gulp.dest(`./${folder}/js/app`))
   .pipe(gulpIf(isProduction, manifest()))

@@ -174,5 +174,39 @@
       })
     }
 
+    // popup + file custom
+    {
+      const fileCustom = ($el) => {
+        const $file = $el.find('.js-file')
+        $file.jfilestyle({
+          text: 'Выбрать...',
+          placeholder: 'Выберите файл',
+          dragdrop: false
+        })
+      }
+      fileCustom($document)
+
+      new jBox('Modal', {
+        attach: '.js-modal',
+        onOpen: function () {
+          const $source = this.source
+          const $target = $source.parent().find('[hidden]')
+          $target.find('.js-file').jfilestyle('destroy')
+          const html = $target.html()
+          $target.html('')
+          this.setContent(html)
+          fileCustom(this.content)
+        },
+        onCloseComplete: function () {
+          const $source = this.source
+          const $target = $source.parent().find('[hidden]')
+          this.content.find('.js-file').jfilestyle('destroy')
+          const html = this.content.html()
+          this.setContent('')
+          $target.html(html)
+        }
+      })
+    }
+
   })
 })(jQuery, Swiper, jBox, document, window)

@@ -1803,6 +1803,7 @@ img {
   height: 100%;
   border-color: #e0e4eb !important;
   padding: .75rem 3rem .75rem 1rem;
+  border-radius: 4px;
 }
 .SumoSelect > .CaptionCont > span {
   width: 100%;
@@ -1938,12 +1939,12 @@ img {
 .form-flex.form-bottom > .left {
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
+      align-items: center;
 }
 @media (max-width: 1200px) {
   .form-flex.form-bottom > .left {
     margin-bottom: 1rem;
-    -ms-flex-align: center;
-        align-items: center;
     text-align: left;
   }
 }
@@ -2274,6 +2275,7 @@ img {
   border-radius: 4px;
   margin-bottom: 1.5rem;
   position: relative;
+  min-height: 9rem;
   transition: color .3s;
 }
 .file:before {
@@ -2316,22 +2318,36 @@ img {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-left: -1.5rem;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
 }
 .files > .file {
-  width: calc(50% - 1.5rem);
-  margin-left: 1.5rem;
+  width: calc(50% - .75rem);
 }
 @media (max-width: 768px) {
   .files > .file {
     width: 100%;
-    margin-left: 0;
   }
+}
+.files.min > .file {
+  padding: 1rem 1rem 1rem 76px;
+  min-height: 5rem;
+}
+.files.min > .file:before {
+  left: 1rem;
+  top: 1rem;
+  width: 32px;
+  height: 48px;
+}
+.files.min > .file:after {
+  padding: 0;
+  left: 1.5rem;
+  top: 2.5rem;
+  font-size: 10px;
 }
 @media (max-width: 768px) {
   .files {
     display: block;
-    margin-left: 0;
   }
 }
 .file > span {
@@ -2519,8 +2535,7 @@ img {
   visibility: hidden;
 }
 .map {
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: auto;
 }
 .map-wrapper {
   width: 1440px;
@@ -2582,6 +2597,16 @@ img {
 .map-tooltip > .link.more:after {
   margin-left: 0;
 }
+@media (max-width: 768px) {
+  .map {
+    height: 400px;
+  }
+}
+@media (max-width: 480px) {
+  .map {
+    height: 300px;
+  }
+}
 .jBox-container {
   background-color: transparent;
 }
@@ -2596,6 +2621,25 @@ img {
 }
 .jBox-pointer {
   display: none;
+}
+.jBox-Modal .jBox-content {
+  padding: 1.5rem 1.5rem 0 1.5rem;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.jBox-Modal .jBox-content .form {
+  width: 66rem;
+  max-width: 100%;
+}
+.jBox-Modal .jBox-content .proc-left {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+.jBox-Modal .jBox-content .proc-controls {
+  text-align: left;
+}
+.jBox-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 .slider {
   height: 280px;
@@ -2923,7 +2967,211 @@ img {
   height: 100%;
   background-color: #31a3dc;
 }
+@media (max-width: 480px) {
+  .loader__line {
+    width: calc(100% - 4rem);
+    margin: 0 auto;
+  }
+}
 .loader.start > .loader__line > span {
   width: 100%;
   animation: loader 2s ease-in-out;
+}
+.proc {
+  border: 1px solid #e0e4eb;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 4px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-align: center;
+      align-items: center;
+}
+.proc-left {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  width: calc(100% - 182px);
+}
+@media (max-width: 1024px) {
+  .proc-left {
+    display: block;
+  }
+}
+@media (max-width: 768px) {
+  .proc-left {
+    width: 100%;
+    text-align: left;
+  }
+}
+.proc-col {
+  width: 40%;
+  padding-right: 1rem;
+}
+.proc-col:first-child {
+  width: 35%;
+}
+@media (max-width: 1024px) {
+  .proc-col:first-child {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+.proc-col:last-child {
+  width: 25%;
+}
+@media (max-width: 1024px) {
+  .proc-col:last-child {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+@media (max-width: 1024px) {
+  .proc-col {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+.proc-controls {
+  text-align: right;
+}
+.proc-bottom > .form-flex:last-child > .form-control {
+  text-align: right;
+}
+.proc-bottom > .form-flex:last-child > .form-control > .button {
+  margin-left: 1rem;
+}
+@media (max-width: 480px) {
+  .proc-bottom > .form-flex:last-child > .form-control > .button {
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+}
+.proc-bottom > .form-flex:last-child > .form-control > .button:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 480px) {
+  .proc-bottom > .form-flex:last-child > .form-control {
+    text-align: center;
+  }
+}
+.proc-line {
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 1.25rem;
+  margin-bottom: 1rem;
+}
+.proc-line > span {
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+}
+.proc-line > span.gray {
+  white-space: normal;
+  width: 160px;
+}
+@media (max-width: 1024px) {
+  .proc-line > span.gray {
+    width: 18rem;
+    padding-right: 2rem;
+  }
+}
+.proc-line:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 1024px) {
+  .proc-line {
+    margin-bottom: .5rem;
+  }
+}
+.proc > .button {
+  height: 5rem;
+}
+@media (max-width: 768px) {
+  .proc > .button {
+    height: auto;
+  }
+}
+@media (max-width: 768px) {
+  .proc {
+    display: block;
+    text-align: right;
+  }
+}
+@media (max-width: 480px) {
+  .proc {
+    text-align: center;
+  }
+}
+.jfilestyle {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+      align-items: flex-start;
+}
+.jfilestyle > div[name="filedrag"] {
+  display: none;
+}
+.jfilestyle > input[type="text"] {
+  display: block;
+  width: 10rem;
+  height: 3rem;
+  border: 1px solid #e0e4eb;
+  background: #fff;
+  border-radius: 4px 0 0 4px;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding: .875rem 1.5rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+@media (max-width: 480px) {
+  .jfilestyle > input[type="text"] {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: calc(100% - 9rem) !important;
+  }
+}
+.jfilestyle > .focus-jfilestyle > label {
+  display: block;
+}
+.jfilestyle > .focus-jfilestyle span {
+  height: 3rem;
+  display: inline-block;
+  vertical-align: top;
+  padding: 1rem 1.5rem;
+  font-size: 14px;
+  line-height: 16px;
+  color: #31a3dc;
+  background-color: #fff;
+  border: 1px solid #31a3dc;
+  text-transform: uppercase;
+  border-radius: 0 4px 4px 0;
+  font-weight: bold;
+  position: relative;
+  max-width: 100%;
+  transition: background-color 0.3s, color 0.3s;
+  outline: none;
+  text-align: center;
+}
+.jfilestyle > .focus-jfilestyle span:hover {
+  cursor: pointer;
+  background-color: #31a3dc;
+  color: #fff;
+}
+.jfilestyle > .focus-jfilestyle span:active {
+  background-color: #2880ab;
+}
+@media (max-width: 480px) {
+  .jfilestyle > .focus-jfilestyle span {
+    width: 9rem;
+    padding: 13px 1rem 10px;
+  }
+}
+.jfilestyle > .focus-jfilestyle:focus {
+  outline: none;
 }
