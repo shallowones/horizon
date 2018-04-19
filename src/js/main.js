@@ -100,14 +100,6 @@
           const html = $source.find('div[hidden]').html()
           this.setContent(html)
           this.content.find('i').on('click', this.close.bind(this))
-
-          // rerender captcha
-          const gCaptcha = window.grecaptcha
-          const $captcha = this.content.find('.g-recaptcha')
-          if (is($captcha) && typeof gCaptcha !== 'undefined' && gCaptcha.hasOwnProperty('render')) {
-            $captcha.html('')
-            gCaptcha.render($captcha[0])
-          }
         }
       })
     }
@@ -208,6 +200,15 @@
           $target.html('')
           this.setContent(html)
           fileCustom(this.content)
+          this.content.find('[data-close]').on('click', this.close.bind(this))
+
+          // rerender captcha
+          const gCaptcha = window.grecaptcha
+          const $captcha = this.content.find('.g-recaptcha')
+          if (is($captcha) && typeof gCaptcha !== 'undefined' && gCaptcha.hasOwnProperty('render')) {
+            $captcha.html('')
+            gCaptcha.render($captcha[0])
+          }
         },
         onCloseComplete: function () {
           const $source = this.source

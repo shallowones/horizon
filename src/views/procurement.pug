@@ -1,6 +1,7 @@
 extends layout
 
 include mixins/header
+include mixins/footer
 
 block content
 
@@ -20,7 +21,7 @@ block content
             a(href="#").inline.link Параметр 2
             a(href="#").inline.link Параметр 3
         .form-filter-bottom
-          each item in [0, 1, 2]
+          each item in [0, 1]
             .proc
               .proc-left
                 .proc-col
@@ -67,6 +68,55 @@ block content
                       .form-control
                         input(type="file").form__file.js-file
                       .form-control
-                        button(type="button").button Отменить
+                        button(type="button", data-close).button Отменить
                         button(type="button").button.back-blue Отправить заявку
-
+            .proc
+              .proc-left
+                .proc-col
+                  h4 Дата:
+                  .proc-line
+                    span.gray Дата размещения
+                    span 02.02.2018 г.
+                  .proc-line
+                    span.gray Дата окончания приёма заявок
+                    span 02.04.2018 г.
+                .proc-col
+                  h4 Описание:
+                  p Информация о текущем объекте закупки
+                .proc-col
+                  h4 Объект закупки:
+                  p Закупка профилей
+              button(type="button").button.back-blue.js-modal Принять участие
+              div(hidden)
+                // класс wait добавлять только во время ajax-запроса
+                form(action="#").form.with-loader.wait
+                  .proc-left
+                    .proc-col
+                      h4 Дата:
+                      .proc-line
+                        span.gray Дата размещения
+                        span 02.02.2018 г.
+                      .proc-line
+                        span.gray Дата окончания приёма заявок
+                        span 02.04.2018 г.
+                    .proc-col
+                      h4 Описание:
+                      p Информация о текущем объекте закупки
+                    .proc-col
+                      h4 Объект закупки:
+                      p Закупка профилей
+                  .proc-bottom
+                    h4 Прикрепленные документы с дополнительной информацией:
+                    .proc-controls
+                      .files.min
+                        a(href="file.doc").file Прикрепленный документ
+                        a(href="file.pdf").file Прикрепленный документ
+                    .form-control
+                      textarea(id="textarea-1", placeholder="Введите Ваш комментарий").form__textarea
+                    .form-flex
+                      .form-control
+                        input(type="file").form__file.js-file
+                      .form-control
+                        button(type="button", data-close).button Отменить
+                        button(type="button").button.back-blue Отправить заявку
+  +footer(false)

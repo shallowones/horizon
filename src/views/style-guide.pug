@@ -1,6 +1,7 @@
 extends layout
 
 include mixins/header
+include mixins/footer
 
 block content
 
@@ -521,4 +522,11 @@ block content
             .slider-item__img(style="background-image: url('images/gallery-3.jpg')")
           a(href="images/gallery-4.jpg", data-fancybox="gal").swiper-slide.slider-item
             .slider-item__img(style="background-image: url('images/gallery-4.jpg')")
+
+      br
+      br
+
+      include includes/pagination
+
+  +footer(false)
 

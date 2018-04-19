@@ -1,6 +1,7 @@
 extends layout
 
 include mixins/header
+include mixins/footer
 
 block loader
   .loader.js-loader
@@ -82,3 +83,4 @@ block content
                 11 лицензионных участках на юге Тюменской области (Уватский муниципальный
                 район), 7 лицензионных участках в Ханты-Мансийском автономном округе –
                 Югре, 1 лицензионном участке в Омской области
+  +footer(true)

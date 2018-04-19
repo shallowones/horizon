@@ -1,6 +1,7 @@
 extends layout
 
 include mixins/header
+include mixins/footer
 
 block content
 
@@ -17,3 +18,4 @@ block content
           .page404-buttons
             a(href="#").button.back-blue Вернуться на главную
             a(href="#").button.img-left.mail Написать в поддержку
+  +footer(false)
