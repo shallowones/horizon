@@ -16,6 +16,8 @@
 
     const $page = $('.page')
 
+    const is = (el) => { return typeof el !== 'undefined' && el.length }
+
     // weather presets
     {
       const $weatherButtons = $('.js-weather')
@@ -33,10 +35,12 @@
     // clients
     {
       const $clientButtons = $('.js-clients')
-      const $clientActiveButton = $('.js-clients.active')
       const $clientArea = $('.clients-area')
       $clientButtons.on('click', (e) => {
         const $this = $(e.currentTarget)
+        if ($this.hasClass(ACTIVE)) {
+          return;
+        }
         const $target = $($this.data('target'))
         const html = $target.html()
         const areaHtml = $clientArea.html()
@@ -96,6 +100,14 @@
           const html = $source.find('div[hidden]').html()
           this.setContent(html)
           this.content.find('i').on('click', this.close.bind(this))
+
+          // rerender captcha
+          const gCaptcha = window.grecaptcha
+          const $captcha = this.content.find('.g-recaptcha')
+          if (is($captcha) && typeof gCaptcha !== 'undefined' && gCaptcha.hasOwnProperty('render')) {
+            $captcha.html('')
+            gCaptcha.render($captcha[0])
+          }
         }
       })
     }

@@ -212,6 +212,7 @@ block content
       h2 Форма поиска
       .form-control.search
         input(type="text", placeholder="Введите фразу для поиска").form__input
+        button(type="button").search__button
       .form-filter
         .form-filter-top
           .left Всего найдено: 428
@@ -427,13 +428,12 @@ block content
       .map-wrapper
         button(type="button", style="left: 207px; top: 155px").map__pin.js-pin
           div(hidden)
-            .map-tooltip
-              .map-tooltip__title Пример заголовка
-                i.map-tooltip__close
+            .map-tooltip-y
+              .map-tooltip-y__title Пример заголовка
+                i.map-tooltip-y__close
               p.
                 Небольшой пример текста, отображаемого при выборе конкретной
                 точки на карте с информацией о конкретном объекте
-              a(href="#").link.more Узнать больше
         button(type="button", style="left: 702px; top: 318px").map__pin.js-pin
           div(hidden)
             .map-tooltip
