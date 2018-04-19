@@ -1031,6 +1031,14 @@ img {
 .flex {
   display: flex;
 
+  & > .right {
+    margin-left: auto;
+
+    @media @plan-mini {
+      margin-left: 0;
+    }
+  }
+
   @media @plan-mini {
     display: block;
   }

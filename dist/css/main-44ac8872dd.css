@@ -1387,6 +1387,14 @@ img {
   display: -ms-flexbox;
   display: flex;
 }
+.flex > .right {
+  margin-left: auto;
+}
+@media (max-width: 768px) {
+  .flex > .right {
+    margin-left: 0;
+  }
+}
 @media (max-width: 768px) {
   .flex {
     display: block;
