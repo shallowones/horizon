@@ -309,7 +309,6 @@ img {
     color: @colorWhite;
     width: 264px;
     position: relative;
-    padding-bottom: 36px;
   }
 
   &__logo {
@@ -317,7 +316,7 @@ img {
     width: 162px;
     height: 162px;
     background: url('../images/svg/logo.svg') no-repeat center;
-    background-size: 114px;
+    background-size: 160px;
   }
 
   &-title {
@@ -754,6 +753,7 @@ img {
 
   &-hidden {
     display: none;
+    height: ~"calc(100% - 36px)";
 
     &.show {
       display: block;
@@ -765,6 +765,8 @@ img {
     display: flex;
     justify-content: space-between;
     padding: 1rem 1.25rem;
+    height: 100%;
+    align-items: center;
   }
 
   &-left {

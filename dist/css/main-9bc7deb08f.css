@@ -758,14 +758,13 @@ img {
   color: #fff;
   width: 264px;
   position: relative;
-  padding-bottom: 36px;
 }
 .header__logo {
   display: block;
   width: 162px;
   height: 162px;
   background: url('../images/svg/logo.svg') no-repeat center;
-  background-size: 114px;
+  background-size: 160px;
 }
 .header-title {
   font-size: 2.5rem;
@@ -1157,6 +1156,7 @@ img {
 }
 .weather-hidden {
   display: none;
+  height: calc(100% - 36px);
 }
 .weather-hidden.show {
   display: block;
@@ -1168,6 +1168,9 @@ img {
   -ms-flex-pack: justify;
       justify-content: space-between;
   padding: 1rem 1.25rem;
+  height: 100%;
+  -ms-flex-align: center;
+      align-items: center;
 }
 .weather-left {
   font-size: 3rem;
