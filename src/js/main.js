@@ -180,6 +180,9 @@
 
     // popup + file custom
     {
+      const AJAX_COMPLETE_EVENT = 'procurementAjaxComplete'
+      const MODAL = '.js-modal'
+
       const fileCustom = ($el) => {
         const $file = $el.find('.js-file')
         $file.jfilestyle({
@@ -190,8 +193,8 @@
       }
       fileCustom($document)
 
-      new jBox('Modal', {
-        attach: '.js-modal',
+      const modal = new jBox('Modal', {
+        attach: MODAL,
         onOpen: function () {
           const $source = this.source
           const $target = $source.parent().find('[hidden]')
@@ -218,6 +221,11 @@
           this.setContent('')
           $target.html(html)
         }
+      })
+
+      $document.on(AJAX_COMPLETE_EVENT, (e) => {
+        const $this = $(e.currentTarget)
+        modal.attach($this.find(MODAL))
       })
     }
 
