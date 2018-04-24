@@ -159,7 +159,7 @@
         if (!isActive) {
           setTimeout(() => {
             $target.find('input').focus()
-          }, 100)
+          }, 500)
         }
       })
       const closeSearchForm = () => {
@@ -172,7 +172,7 @@
       }
       $document.scroll(closeSearchForm)
       $window.resize(() => {
-        if ($searchButtons.hasClass(ACTIVE)) {
+        if (document.activeElement.type !== 'text' && $searchButtons.hasClass(ACTIVE)) {
           closeSearchForm()
         }
       })
