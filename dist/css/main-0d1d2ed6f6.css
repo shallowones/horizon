@@ -707,7 +707,8 @@ img {
 }
 .header-top {
   height: 600px;
-  background: url('../images/main.jpg') no-repeat center;
+  background: url('../images/main.jpg') no-repeat center bottom;
+  background-size: cover;
 }
 .header-top > .wrapper {
   height: 100%;
