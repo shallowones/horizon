@@ -274,6 +274,11 @@ img {
       @media @plan {
         display: block;
       }
+
+      @media @plan-mini {
+        padding-left: 0;
+        padding-right: 0;
+      }
     }
 
     @media @plan {
@@ -287,10 +292,14 @@ img {
     justify-content: space-between;
 
     @media @plan-mini {
-      justify-content: flex-end;
+      //justify-content: flex-end;
     }
 
     @media @mobile {
+      //justify-content: center;
+    }
+
+    @media (max-width: 415px) {
       justify-content: center;
     }
   }
@@ -301,7 +310,7 @@ img {
 
   &-left {
 
-    @media @plan-mini {
+    @media (max-width: 415px) {
       display: none;
     }
   }
@@ -318,6 +327,12 @@ img {
     height: 162px;
     background: url('../images/svg/logo.svg') no-repeat center;
     background-size: 138px;
+
+    @media @mobile {
+      width: 146px;
+      height: 154px;
+      background-size: 120px;
+    }
   }
 
   &-title {
@@ -336,6 +351,8 @@ img {
       margin-top: 2rem;
       font-size: 2rem;
       line-height: 2.5rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
     }
 
     @media @mobile {
@@ -409,10 +426,15 @@ img {
     z-index: 11;
 
     & > .header__logo {
+      display: none;
       width: 72px;
       height: 100%;
       background-size: 56px;
       margin-left: 1rem;
+
+      @media (max-width: 415px) {
+        display: block;
+      }
     }
 
     & > .menu-search {
@@ -754,7 +776,6 @@ img {
 
   &-hidden {
     display: none;
-    height: ~"calc(100% - 36px)";
 
     &.show {
       display: block;
@@ -766,7 +787,6 @@ img {
     display: flex;
     justify-content: space-between;
     padding: 1rem 1.25rem;
-    height: 100%;
     align-items: center;
   }
 
@@ -802,14 +822,7 @@ img {
     line-height: 18px;
     font-weight: 500;
     text-align: center;
-    position: absolute;
-    left: 0;
-    bottom: 0;
     border-top: 1px solid rgba(255, 255, 255, .2);
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 }
 

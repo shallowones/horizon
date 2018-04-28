@@ -195,6 +195,8 @@
 
       const modal = new jBox('Modal', {
         attach: MODAL,
+        closeOnClick: false,
+        closeButton: false,
         onOpen: function () {
           const $source = this.source
           const $target = $source.parent().find('[hidden]')
