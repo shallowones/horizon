@@ -18,6 +18,22 @@
   }
 }
 
+@keyframes moveDown {
+  0% {
+    transform: translateY(-83px)
+  }
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(0)
+  }
+
+  100% {
+    transform: translateY(-83px)
+  }
+}
+
 ::-webkit-input-placeholder {
   color: @colorBlackGray;
   font-size: 16px;
@@ -363,25 +379,29 @@ img {
   }
 
   &-bottom {
-    height: 83px;
+    padding-bottom: 83px;
     position: relative;
 
-    & > .wrapper {
-      height: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    &__wrap {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 2;
+      background-color: @colorWhite;
 
-      & > .header__logo {
-        width: 64px;
-        height: 64px;
-        background-size: 100%;
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-color: @colorPlatinum;
       }
-    }
-
-    &.with-logo {
 
       & > .wrapper {
+        height: 83px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -391,28 +411,10 @@ img {
           height: 64px;
           background-size: 100%;
         }
-
-        & > .menu {
-          width: ~"calc(100% - 104px)";
-
-          @media @desktop-mini {
-            width: ~"calc(100% - 80px)";
-          }
-        }
       }
     }
 
-    &:after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 1px;
-      background-color: @colorPlatinum;
-    }
-
-    @media @plan {
+    @media @plan-mini {
       display: none;
     }
   }
@@ -454,8 +456,87 @@ img {
       background-color: @colorPlatinum;
     }
 
-    @media @plan {
+    @media @plan-mini {
       display: flex;
+    }
+  }
+
+  &.with-logo {
+
+    & > .header-mobile {
+
+      & > .header__logo {
+        display: block;
+      }
+    }
+
+    & > .header-bottom {
+
+      & .wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & > .header__logo {
+          width: 64px;
+          height: 64px;
+          background-size: 100%;
+
+          @media @plan {
+            width: 44px;
+            height: 44px;
+          }
+        }
+
+        & > .menu {
+          width: ~"calc(100% - 104px)";
+
+          & > ul > li > a {
+
+            @media @plan {
+              font-size: 1.75vw;
+            }
+          }
+
+          @media @desktop-mini {
+            width: ~"calc(100% - 80px)";
+          }
+
+          @media @plan {
+            width: ~"calc(100% - 52px)";
+          }
+        }
+      }
+    }
+  }
+}
+
+.fixed-scroll {
+
+  &-top, &-bottom {
+    position: fixed;
+    padding-right: 17px;
+
+    @media @plan {
+      padding-right: 0;
+    }
+  }
+
+  &-top {
+    animation: moveDown .5s;
+
+    @media @plan {
+      //animation: none;
+    }
+  }
+
+  &-bottom {
+    animation: moveUp .5s;
+    transform: translateY(-137px);
+
+    @media @plan {
+      //animation: none;
+      //transform: none;
     }
   }
 }
@@ -836,7 +917,6 @@ img {
     height: 100%;
 
     & > li {
-      width: 100%;
       height: 100%;
 
       & > a {
@@ -855,6 +935,10 @@ img {
         &:hover {
           color: @colorBlue;
         }
+
+        @media @plan {
+          font-size: 1.875vw;
+        }
       }
 
       &:first-child {
@@ -872,7 +956,6 @@ img {
       }
 
       &:last-child {
-        width: auto;
 
         & > .menu-sub {
 
@@ -962,6 +1045,10 @@ img {
       &:hover {
         background-image: url('../images/svg/close.svg');
       }
+    }
+
+    @media @plan {
+      width: 2.5rem;
     }
   }
 
@@ -1053,6 +1140,12 @@ img {
     @media @plan-mini {
       margin-left: 0;
     }
+  }
+
+  &-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   @media @plan-mini {
@@ -2748,6 +2841,10 @@ img {
 
     @media @desktop-mini {
       padding: 0 6.5rem 0 2rem;
+    }
+
+    @media @plan {
+      padding-right: 5rem;
     }
   }
 

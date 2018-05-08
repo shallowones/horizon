@@ -231,5 +231,39 @@
       })
     }
 
+    // floating menu
+    {
+      const SCROLL_TOP = 'fixed-scroll-top'
+      const SCROLL_BOTTOM = 'fixed-scroll-bottom'
+      const DIFF_MORE = 200
+
+      const $float = $('.header-bottom__wrap')
+      const $headerBottom = $('.header-bottom')
+      const plusPixels = $headerBottom.offset().top
+
+      let previousPosition = 0
+      $page.scroll((e) => {
+        const headerTopPosition = $headerBottom.offset().top
+        const currentPosition = e.currentTarget.scrollTop
+        if (currentPosition > headerTopPosition + plusPixels) {
+          if (previousPosition > currentPosition) {
+            if (previousPosition - currentPosition > DIFF_MORE + headerTopPosition) {
+              $float.removeClass(SCROLL_BOTTOM)
+              $float.addClass(SCROLL_TOP)
+              previousPosition = currentPosition
+            }
+          } else {
+            if ($float.hasClass(SCROLL_TOP)) {
+              $float.removeClass(SCROLL_TOP)
+              $float.addClass(SCROLL_BOTTOM)
+            }
+            previousPosition = currentPosition
+          }
+        } else {
+          $float.removeClass(SCROLL_TOP + ' ' + SCROLL_BOTTOM)
+        }
+      })
+    }
+
   })
 })(jQuery, Swiper, jBox, document, window)

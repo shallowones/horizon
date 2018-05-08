@@ -5,21 +5,11 @@ mixin header(isMainPage)
       {
         name: 'О компании',
         sub: [
-          'Первый пункт',
-          'Второй пункт',
-          'Третий пункт'
+          'Перечень лицензий и свидетельств'
         ]
       },
       {
-        name: 'Услуги',
-        sub: [
-          'Первый пункт',
-          'Второй пункт',
-          'Третий пункт'
-        ]
-      },
-      {
-        name: 'География'
+        name: 'Услуги'
       },
       {
         name: 'Закупки'
@@ -27,10 +17,12 @@ mixin header(isMainPage)
       {
         name: 'Карьера',
         sub: [
-          'Первый пункт',
-          'Второй пункт',
-          'Третий пункт'
+          'Молодые специалисты',
+          'Вакансии'
         ]
+      },
+      {
+        name: 'География работ'
       },
       {
         name: 'Сотрудникам'
@@ -56,7 +48,7 @@ mixin header(isMainPage)
             li
               a(href="#")= item.name
 
-  header.header
+  header.header(class=(!isMainPage) ? 'with-logo' : '')
     .header-mobile
       a(href="#").header__logo
       button(type="button", data-target="#search-mobile").menu-search.js-search
@@ -96,27 +88,28 @@ mixin header(isMainPage)
                   p [ тут что-то еще ]
               .weather-company Цена барреля нефть: 75.30$, -1.53%
           .header-title Геологоразведочная компания<br>ООО «Горизонт»
-    .header-bottom(class=(!isMainPage) ? 'with-logo' : '')
-      .wrapper
-        if (!isMainPage)
-          a(href="#").header__logo
-        nav.menu
-          ul
-            each item in menuItems
-              if (item.hasOwnProperty('sub'))
-                li.parent
-                  a(href="#")= item.name
-                  nav.menu-sub
-                    ul
-                      each sub in item.sub
-                        li
-                          a(href="#")= sub
-              else
-                li
-                  a(href="#")= item.name
-            li
-              button(type="button", data-target="#search").menu-search.js-search
-        form(action="#")#search.search-form
-          input(type="text", placeholder="Введите запрос").search-form__input
-          button(type="submit").button Найти
+    .header-bottom
+      .header-bottom__wrap
+        .wrapper
+          if (!isMainPage)
+            a(href="#").header__logo
+          nav.menu
+            ul
+              each item in menuItems
+                if (item.hasOwnProperty('sub'))
+                  li.parent
+                    a(href="#")= item.name
+                    nav.menu-sub
+                      ul
+                        each sub in item.sub
+                          li
+                            a(href="#")= sub
+                else
+                  li
+                    a(href="#")= item.name
+              li
+                button(type="button", data-target="#search").menu-search.js-search
+          form(action="#")#search.search-form
+            input(type="text", placeholder="Введите запрос").search-form__input
+            button(type="submit").button Найти
     #animation-trigger-1.abs.abs-35
